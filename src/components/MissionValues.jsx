@@ -3,7 +3,7 @@ import { FiShield, FiFeather, FiSmile } from "react-icons/fi";
 import { useLanguage } from "../context/languagecontext";
 
 const MissionValues = ({ values = [] }) => {
-	const { t, currentTranslations } = useLanguage();
+	const { t } = useLanguage();
 
 	const getIcon = (type) => {
 		switch (type) {
@@ -48,7 +48,7 @@ const MissionValues = ({ values = [] }) => {
 	];
 
 	return (
-		<section className='bg-[#F8F9FA] py-20 border-y border-grey-200 mb-24'>
+		<section className='bg-grey-50 py-20 border-y border-grey-200 mb-24'>
 			<div className='container mx-auto px-4'>
 				<div className='text-center max-w-2xl mx-auto mb-14'>
 					<span className='text-xs font-bold uppercase tracking-widest text-accent'>

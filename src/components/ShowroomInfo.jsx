@@ -16,9 +16,9 @@ const ShowroomInfo = () => {
 		<div className='lg:col-span-5 space-y-6'>
 			{/* Map / Showroom Location Visual */}
 			<div className='bg-white rounded-3xl border border-grey-200 overflow-hidden shadow-soft'>
-				<div className='relative h-56 bg-slate-800 flex items-center justify-center p-6 text-center text-white overflow-hidden'>
+				<div className='relative h-56 bg-slate-900 flex items-center justify-center p-6 text-center text-white overflow-hidden'>
 					<div
-						className='absolute inset-0 opacity-20 bg-[radial-gradient(#286f6c_1px,transparent_1px)]'
+						className='absolute inset-0 opacity-20 bg-[radial-gradient(#c2782a_1px,transparent_1px)]'
 						style={{ backgroundSize: "16px 16px" }}
 					/>
 					<div className='relative z-10 flex flex-col items-center gap-2'>

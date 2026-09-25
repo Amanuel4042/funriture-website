@@ -31,7 +31,7 @@ const Hero = ({ onNavigate }) => {
 				</h1>
 
 				{/* Tagline */}
-				<p className='text-base sm:text-lg md:text-xl text-grey-200 font-normal leading-relaxed max-w-2xl mx-auto mb-10'>
+				<p className='text-sm sm:text-base md:text-[17px] text-grey-100/90 font-normal leading-relaxed md:leading-8 max-w-2xl mx-auto mb-10 tracking-normal antialiased'>
 					{t(
 						"hero.subtitle",
 						"Discover bespoke, handcrafted furniture engineered for timeless elegance and architectural calm. Every piece tells a story of refined materials and master craftsmanship."

@@ -3,7 +3,7 @@ import { useLanguage } from "../context/languagecontext";
 import { FiGlobe } from "react-icons/fi";
 
 const LanguageToggle = ({ variant = "header", isTransparent = false }) => {
-	const { language, setLanguage, toggleLanguage, isAmharic } = useLanguage();
+	const { language, setLanguage } = useLanguage();
 
 	if (variant === "drawer") {
 		return (
@@ -12,13 +12,13 @@ const LanguageToggle = ({ variant = "header", isTransparent = false }) => {
 					<FiGlobe className='text-accent text-lg' />
 					<span>ቋንቋ / Language</span>
 				</div>
-				<div className='flex items-center bg-white border border-grey-200 p-1 rounded-xl shadow-xs'>
+				<div className='flex items-center bg-white border border-grey-200 p-1 rounded-xl shadow-sm'>
 					<button
 						type='button'
 						onClick={() => setLanguage("en")}
 						className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
 							language === "en"
-								? "bg-accent text-white shadow-xs"
+								? "bg-accent text-white shadow-sm"
 								: "text-grey-600 hover:text-primary"
 						}`}
 						aria-label='Switch to English'
@@ -30,7 +30,7 @@ const LanguageToggle = ({ variant = "header", isTransparent = false }) => {
 						onClick={() => setLanguage("am")}
 						className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
 							language === "am"
-								? "bg-accent text-white shadow-xs"
+								? "bg-accent text-white shadow-sm"
 								: "text-grey-600 hover:text-primary"
 						}`}
 						aria-label='ወደ አማርኛ ቀይር'
@@ -45,7 +45,7 @@ const LanguageToggle = ({ variant = "header", isTransparent = false }) => {
 	// Default: Header pill toggle
 	return (
 		<div
-			className={`inline-flex items-center p-0.5 rounded-full border transition-all duration-200 shadow-xs ${
+			className={`inline-flex items-center p-0.5 rounded-full border transition-all duration-200 shadow-sm ${
 				isTransparent
 					? "bg-black/30 border-white/20 backdrop-blur-md text-white"
 					: "bg-grey-100/90 border-grey-200 text-grey-700"

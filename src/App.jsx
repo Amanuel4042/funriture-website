@@ -178,7 +178,7 @@ function App() {
 	};
 
 	return (
-		<div className='min-h-screen flex flex-col bg-[#FBFBFB] font-sans text-grey-700 antialiased'>
+		<div className='min-h-screen flex flex-col bg-grey-50 font-sans text-grey-700 antialiased'>
 			{/* Persistent Sticky Header */}
 			<Header
 				currentPath={currentPath}

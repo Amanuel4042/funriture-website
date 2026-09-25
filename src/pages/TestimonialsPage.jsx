@@ -36,7 +36,7 @@ const TestimonialsPage = ({ onSelectProduct }) => {
 	};
 
 	return (
-		<div className='w-full pb-24 bg-[#FBFBFB]'>
+		<div className='w-full pb-24 bg-grey-50'>
 			{/* HERO SECTION */}
 			<section className='relative bg-hero bg-cover bg-center text-white pt-36 pb-20 mb-12 overflow-hidden'>
 				{/* Lighter architectural overlay matching home page hero */}
@@ -50,7 +50,7 @@ const TestimonialsPage = ({ onSelectProduct }) => {
 					<h1 className='text-3xl sm:text-5xl md:text-6xl font-primary font-bold text-white mt-2 mb-4 drop-shadow-sm'>
 						{t("testimonialsPage.heroTitle", "Loved by Designers & Homeowners")}
 					</h1>
-					<p className='text-base sm:text-lg md:text-xl text-grey-200 font-normal leading-relaxed max-w-2xl mx-auto drop-shadow-sm'>
+					<p className='text-sm sm:text-base md:text-[17px] text-grey-100/90 font-normal leading-relaxed md:leading-8 max-w-2xl mx-auto drop-shadow-sm antialiased'>
 						{t("testimonialsPage.heroSubtitle", "Discover genuine reviews, home installations, and testimonials from interior architects and homeowners who have furnished with TK Craft.")}
 					</p>
 				</div>

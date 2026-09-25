@@ -25,7 +25,7 @@ const AboutPage = ({ onNavigate }) => {
 					<h1 className='text-3xl sm:text-5xl md:text-6xl font-primary font-bold text-white mt-2 mb-4 drop-shadow-sm'>
 						{t("aboutPage.heroTitle", "Our Story & Heritage")}
 					</h1>
-					<p className='text-base sm:text-lg md:text-xl text-grey-200 font-normal leading-relaxed max-w-2xl mx-auto drop-shadow-sm'>
+					<p className='text-sm sm:text-base md:text-[17px] text-grey-100/90 font-normal leading-relaxed md:leading-8 max-w-2xl mx-auto drop-shadow-sm antialiased'>
 						{t(
 							"aboutPage.heroSubtitle",
 							"How a humble woodworking workshop grew into an architectural furniture design house dedicated to slow craftsmanship, sustainable forestry, and timeless living."

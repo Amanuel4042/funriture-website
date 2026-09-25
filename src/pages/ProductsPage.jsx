@@ -103,7 +103,7 @@ const ProductsPage = ({
 	];
 
 	return (
-		<div className='w-full pb-24 bg-[#FBFBFB]'>
+		<div className='w-full pb-24 bg-grey-50'>
 			{/* HERO SECTION */}
 			<section className='relative bg-hero bg-cover bg-center text-white pt-36 pb-20 mb-10 overflow-hidden'>
 				{/* Lighter architectural overlay matching home page hero */}
@@ -117,7 +117,7 @@ const ProductsPage = ({
 					<h1 className='text-3xl sm:text-5xl md:text-6xl font-primary font-bold text-white mt-2 mb-4 drop-shadow-sm'>
 						{wishlistOnly ? t("productsPage.heroTitleLiked", "Your Liked Furniture") : t("productsPage.heroTitleCatalog", "Curated Furniture Collection")}
 					</h1>
-					<p className='text-base sm:text-lg md:text-xl text-grey-200 font-normal leading-relaxed max-w-2xl mx-auto drop-shadow-sm'>
+					<p className='text-sm sm:text-base md:text-[17px] text-grey-100/90 font-normal leading-relaxed md:leading-8 max-w-2xl mx-auto drop-shadow-sm antialiased'>
 						{wishlistOnly
 							? t("productsPage.heroSubtitleLiked", "Review and inquire about all the bespoke furniture pieces you have saved to your personal collection.")
 							: t("productsPage.heroSubtitleCatalog", "Discover bespoke, handcrafted living room, bedroom, office, and outdoor pieces designed for architectural calm.")}

@@ -8,7 +8,7 @@ const ContactPage = ({ inquiryProduct, onClearInquiryProduct, onNavigate }) => {
 	const { t } = useLanguage();
 
 	return (
-		<div className='w-full pb-24 bg-[#FBFBFB]'>
+		<div className='w-full pb-24 bg-grey-50'>
 			{/* HERO SECTION */}
 			<section className='relative bg-hero bg-cover bg-center text-white pt-36 pb-20 mb-14 overflow-hidden'>
 				{/* Lighter architectural overlay matching home page hero */}
@@ -22,7 +22,7 @@ const ContactPage = ({ inquiryProduct, onClearInquiryProduct, onNavigate }) => {
 					<h1 className='text-3xl sm:text-5xl md:text-6xl font-primary font-bold text-white mt-2 mb-4 drop-shadow-sm'>
 						{t("contactPage.heroTitle", "Get in Touch")}
 					</h1>
-					<p className='text-base sm:text-lg md:text-xl text-grey-200 font-normal leading-relaxed max-w-2xl mx-auto drop-shadow-sm'>
+					<p className='text-sm sm:text-base md:text-[17px] text-grey-100/90 font-normal leading-relaxed md:leading-8 max-w-2xl mx-auto drop-shadow-sm antialiased'>
 						{t("contactPage.heroSubtitle", "Have questions about custom dimensions, wood finishes, or visiting our Gerji atelier? Our design specialists are here to assist.")}
 					</p>
 				</div>

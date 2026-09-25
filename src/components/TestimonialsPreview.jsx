@@ -10,7 +10,7 @@ const TestimonialsPreview = ({ testimonials = [], onNavigate }) => {
 	const localizedReviews = currentTranslations.testimonialsPage?.reviews?.slice(0, 3) || testimonials;
 
 	return (
-		<section className='py-20 md:py-28 bg-[#F8F9FA]'>
+		<section className='py-20 md:py-28 bg-grey-50 border-t border-grey-200'>
 			<div className='container mx-auto'>
 				<div className='text-center max-w-2xl mx-auto mb-14'>
 					<span className='text-xs font-bold uppercase tracking-widest text-accent'>

@@ -14,7 +14,7 @@ const FeaturedProducts = ({
 	const { t } = useLanguage();
 
 	return (
-		<section className='py-20 md:py-28 bg-[#FAFAFA] border-b border-grey-200'>
+		<section className='py-20 md:py-28 bg-grey-50 border-b border-grey-200'>
 			<div className='container mx-auto'>
 				<div className='flex flex-col md:flex-row md:items-end justify-between mb-12'>
 					<div>

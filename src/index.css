@@ -1,14 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Saira:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-	--primary-color: #286f6c;
-	--primary-dark: #1f242e;
-	--accent: #286f6c;
-	--accent-hover: #205956;
+	--primary-color: #c2782a;
+	--primary-dark: #0b0f17;
+	--accent: #c2782a;
+	--accent-hover: #aa631b;
+	--accent-light: #fbf3ea;
 }
 
 html {
@@ -17,7 +18,7 @@ html {
 
 @layer base {
 	body {
-		@apply bg-[#FBFBFB] font-sans text-grey-700 antialiased selection:bg-accent selection:text-white;
+		@apply bg-grey-50 font-sans text-grey-700 antialiased selection:bg-accent selection:text-white;
 	}
 	h1, h2, h3, h4, h5, h6 {
 		@apply font-primary text-primary tracking-tight;
@@ -26,15 +27,15 @@ html {
 
 /* Custom interactive classes */
 .btn-primary {
-	@apply inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-white font-medium px-6 py-3 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md active:scale-[0.98];
+	@apply inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-[#d48936] hover:from-[#aa631b] hover:to-accent text-white font-semibold px-6 py-3.5 rounded-xl shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/30 transition-all duration-200 active:scale-[0.98];
 }
 
 .btn-secondary {
-	@apply inline-flex items-center justify-center gap-2 bg-white hover:bg-grey-100 text-primary border border-grey-200 font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:border-grey-300;
+	@apply inline-flex items-center justify-center gap-2 bg-white hover:bg-grey-100 text-primary border border-grey-200 font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 hover:border-grey-300 shadow-sm active:scale-[0.98];
 }
 
 .btn-outline {
-	@apply inline-flex items-center justify-center gap-2 border border-accent text-accent hover:bg-accent hover:text-white font-medium px-6 py-3 rounded-lg transition-all duration-200;
+	@apply inline-flex items-center justify-center gap-2 border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-200;
 }
 
 .badge-tag {
@@ -47,12 +48,12 @@ html {
 	height: 8px;
 }
 ::-webkit-scrollbar-track {
-	background: #f1f1f1;
+	background: #f4efe7;
 }
 ::-webkit-scrollbar-thumb {
-	background: #cbd5e1;
+	background: #d4c9b9;
 	border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-	background: #94a3b8;
+	background: #b5a894;
 }

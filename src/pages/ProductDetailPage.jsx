@@ -31,7 +31,7 @@ const ProductDetailPage = ({
 	];
 
 	return (
-		<div className='w-full pb-24 bg-[#FBFBFB]'>
+		<div className='w-full pb-24 bg-grey-50'>
 			{/* HERO SECTION */}
 			<section className='relative bg-hero bg-cover bg-center text-white pt-36 pb-14 mb-10 overflow-hidden'>
 				{/* Lighter architectural overlay matching home page hero */}
@@ -45,7 +45,7 @@ const ProductDetailPage = ({
 					<h1 className='text-3xl sm:text-4xl md:text-5xl font-primary font-bold text-white mt-1 mb-3 drop-shadow-sm'>
 						{product.name}
 					</h1>
-					<p className='text-base sm:text-lg text-grey-200 font-normal leading-relaxed max-w-xl mx-auto drop-shadow-sm'>
+					<p className='text-sm sm:text-base md:text-[17px] text-grey-100/90 font-normal leading-relaxed md:leading-8 max-w-xl mx-auto drop-shadow-sm antialiased'>
 						{product.tagline || product.description}
 					</p>
 				</div>
