@@ -7,7 +7,7 @@ import CrossSellBanner from "../components/CrossSellBanner";
 import { useLanguage } from "../context/languagecontext";
 
 const AboutPage = ({ onNavigate }) => {
-	const { story, values, team, crossSellCta } = aboutData;
+	const { story, values, team } = aboutData;
 	const { t } = useLanguage();
 
 	return (
@@ -44,12 +44,7 @@ const AboutPage = ({ onNavigate }) => {
 			<MeetTeam team={team} />
 
 			{/* SECTION 5: CROSS-SELL CTA BANNER */}
-			<CrossSellBanner
-				title={crossSellCta.title}
-				subtitle={crossSellCta.subtitle}
-				buttonText={crossSellCta.buttonText}
-				onNavigate={onNavigate}
-			/>
+			<CrossSellBanner onNavigate={onNavigate} />
 		</div>
 	);
 };

@@ -7,15 +7,33 @@ import { FiEdit3 } from "react-icons/fi";
 import { useLanguage } from "../context/languagecontext";
 
 const TestimonialsPage = ({ onSelectProduct }) => {
-	const { t, translateCategory } = useLanguage();
+	const { t, translateCategory, currentTranslations } = useLanguage();
 	const [activeCategory, setActiveCategory] = useState("All");
-	const [reviewsList, setReviewsList] = useState(testimonialsData.reviews);
+	const [userReviews, setUserReviews] = useState([]);
 	const [showSubmitModal, setShowSubmitModal] = useState(false);
 
+	// Dynamically map reviews from active language translations so quotes & names convert on language toggle
+	const activeReviews = useMemo(() => {
+		const transReviews = currentTranslations.testimonialsPage?.reviews || [];
+		const localized = testimonialsData.reviews.map((orig, index) => {
+			const tr = transReviews.find((r) => r.id === orig.id) || transReviews[index];
+			return {
+				...orig,
+				quote: tr?.quote || orig.quote,
+				author: tr?.author || orig.author,
+				location: tr?.location || orig.location,
+				role: tr?.role || orig.role,
+				product: tr?.product || orig.product,
+				category: orig.category,
+			};
+		});
+		return [...userReviews, ...localized];
+	}, [currentTranslations, userReviews]);
+
 	const filteredReviews = useMemo(() => {
-		if (activeCategory === "All") return reviewsList;
-		return reviewsList.filter((r) => r.category === activeCategory);
-	}, [activeCategory, reviewsList]);
+		if (activeCategory === "All") return activeReviews;
+		return activeReviews.filter((r) => r.category === activeCategory);
+	}, [activeCategory, activeReviews]);
 
 	const handleAddReview = (formData) => {
 		const newReview = {
@@ -32,7 +50,7 @@ const TestimonialsPage = ({ onSelectProduct }) => {
 			avatar: testimonialsData.reviews[0].avatar,
 			date: "Just now",
 		};
-		setReviewsList([newReview, ...reviewsList]);
+		setUserReviews((prev) => [newReview, ...prev]);
 	};
 
 	return (

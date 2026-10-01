@@ -10,9 +10,9 @@ const CrossSellBanner = ({
 }) => {
 	const { t } = useLanguage();
 
-	const bannerTitle = title || t("aboutPage.crossSell.title", "Like what you see? Explore our products");
-	const bannerSub = subtitle || t("aboutPage.crossSell.subtitle", "Browse our complete catalog of curated tables, seating, storage, and lighting.");
-	const bannerBtn = buttonText || t("aboutPage.crossSell.buttonText", "View Products");
+	const bannerTitle = t("aboutPage.crossSell.title", title || "Like what you see? Explore our products");
+	const bannerSub = t("aboutPage.crossSell.subtitle", subtitle || "Browse our complete catalog of curated tables, seating, storage, and lighting.");
+	const bannerBtn = t("aboutPage.crossSell.buttonText", buttonText || "View Products");
 
 	return (
 		<section className='container mx-auto px-4'>

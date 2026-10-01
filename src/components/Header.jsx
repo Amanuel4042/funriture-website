@@ -63,7 +63,7 @@ const Header = ({
 							isTransparent ? "text-white" : "text-primary"
 						}`}
 					>
-						TK <span className='text-accent'>Craft</span>
+						{t("nav.brandName", "TK")} <span className='text-accent'>{t("nav.brandSub", "Craft")}</span>
 					</span>
 				</button>
 
@@ -190,7 +190,7 @@ const Header = ({
 										<img src={Logo} alt='TK Craft Logo' className='h-full w-full object-cover scale-110' />
 									</div>
 									<span className='font-primary font-bold text-lg text-primary tracking-tight'>
-										TK <span className='text-accent'>Craft</span>
+										{t("nav.brandName", "TK")} <span className='text-accent'>{t("nav.brandSub", "Craft")}</span>
 									</span>
 								</div>
 								<button
