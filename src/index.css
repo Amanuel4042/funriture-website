@@ -20,7 +20,13 @@ html {
 	body {
 		@apply bg-grey-50 font-sans text-grey-700 antialiased selection:bg-accent selection:text-white;
 	}
-	h1, h2, h3, h4, h5, h6 {
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		@apply font-primary text-primary tracking-tight;
 	}
 }
@@ -47,13 +53,16 @@ html {
 	width: 8px;
 	height: 8px;
 }
+
 ::-webkit-scrollbar-track {
 	background: #f4efe7;
 }
+
 ::-webkit-scrollbar-thumb {
 	background: #d4c9b9;
 	border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
 	background: #b5a894;
 }

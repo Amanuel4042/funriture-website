@@ -20,7 +20,20 @@ const InquiryForm = ({
 	const [phone, setPhone] = useState("");
 	const [productRef, setProductRef] = useState("");
 	const [message, setMessage] = useState("");
-	const [contactMethod, setContactMethod] = useState("email");
+	const [contactMethods, setContactMethods] = useState({
+		email: true,
+		phone: false,
+	});
+
+	const getContactMethodSummary = () => {
+		if (contactMethods.email && contactMethods.phone) {
+			return t("inquiryForm.contactViaBoth", "Email & Cellphone");
+		}
+		if (contactMethods.phone) {
+			return t("inquiryForm.contactViaPhone", "Cellphone / SMS");
+		}
+		return t("inquiryForm.contactViaEmail", "Email");
+	};
 
 	const [errors, setErrors] = useState({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -98,6 +111,7 @@ const InquiryForm = ({
 				email,
 				phone: phone || (isAmharic ? "አልተጠቀሰም" : "Not provided"),
 				productRef: productRef || (isAmharic ? "አጠቃላይ ጥያቄ" : "General Inquiry"),
+				contactMethodSummary: getContactMethodSummary(),
 				timestamp: new Date().toLocaleString(),
 			});
 			setIsSubmitting(false);
@@ -112,6 +126,7 @@ const InquiryForm = ({
 		setPhone("");
 		setProductRef("");
 		setMessage("");
+		setContactMethods({ email: true, phone: false });
 		setErrors({});
 		setIsSubmitted(false);
 		setSubmittedReceipt(null);
@@ -143,7 +158,7 @@ const InquiryForm = ({
 							</h4>
 							<p className='text-xs sm:text-sm text-emerald-800 mt-1 leading-relaxed'>
 								{t("inquiryForm.slaText", "Our interior consultant will review your inquiry and follow up via")}{" "}
-								<strong>{contactMethod === "email" ? t("inquiryForm.contactViaEmail", "Email") : contactMethod === "phone" ? t("inquiryForm.contactViaPhone", "Phone") : "Telegram"}</strong>{" "}
+								<strong>{submittedReceipt.contactMethodSummary || getContactMethodSummary()}</strong>{" "}
 								{t("inquiryForm.slaWithin", "within")}{" "}
 								<strong>{t("inquiryForm.slaTime", "1 business day")}</strong>.
 							</p>
@@ -256,11 +271,10 @@ const InquiryForm = ({
 							if (errors.name) setErrors({ ...errors, name: null });
 						}}
 						placeholder={t("inquiryForm.namePlaceholder", "Your Full Name")}
-						className={`w-full px-4 py-3 bg-grey-50 border rounded-xl text-sm transition-colors focus:outline-none ${
-							errors.name
+						className={`w-full px-4 py-3 bg-grey-50 border rounded-xl text-sm transition-colors focus:outline-none ${errors.name
 								? "border-rose-400 bg-rose-50/50 focus:border-rose-500"
 								: "border-grey-200 focus:border-accent focus:bg-white"
-						}`}
+							}`}
 					/>
 					{errors.name && (
 						<p className='text-xs text-rose-500 mt-1.5 flex items-center gap-1 font-medium'>
@@ -285,11 +299,10 @@ const InquiryForm = ({
 								if (errors.email) setErrors({ ...errors, email: null });
 							}}
 							placeholder={t("inquiryForm.emailPlaceholder", "name@example.com")}
-							className={`w-full px-4 py-3 bg-grey-50 border rounded-xl text-sm transition-colors focus:outline-none ${
-								errors.email
+							className={`w-full px-4 py-3 bg-grey-50 border rounded-xl text-sm transition-colors focus:outline-none ${errors.email
 									? "border-rose-400 bg-rose-50/50 focus:border-rose-500"
 									: "border-grey-200 focus:border-accent focus:bg-white"
-							}`}
+								}`}
 						/>
 						{errors.email && (
 							<p className='text-xs text-rose-500 mt-1.5 flex items-center gap-1 font-medium'>
@@ -327,33 +340,43 @@ const InquiryForm = ({
 					/>
 				</div>
 
-				{/* Preferred Contact Method */}
+				{/* Preferred Contact Method (Checkbox selection allowing Email, Cellphone, or Both) */}
 				<div>
 					<label className='block text-xs font-bold uppercase tracking-wider text-grey-700 mb-1.5'>
 						{t("inquiryForm.preferredContactLabel", "Preferred Contact Method")}
 					</label>
-					<div className='flex items-center gap-4 text-sm text-grey-600'>
-						<label className='inline-flex items-center gap-2 cursor-pointer'>
+					<div className='flex flex-wrap items-center gap-4 text-sm text-grey-700'>
+						<label className='inline-flex items-center gap-2.5 cursor-pointer select-none'>
 							<input
-								type='radio'
-								name='contactMethod'
-								value='email'
-								checked={contactMethod === "email"}
-								onChange={(e) => setContactMethod(e.target.value)}
-								className='text-accent focus:ring-accent accent-accent'
+								type='checkbox'
+								name='contactMethodEmail'
+								checked={contactMethods.email}
+								onChange={() =>
+									setContactMethods((prev) => {
+										const next = { ...prev, email: !prev.email };
+										if (!next.email && !next.phone) return prev;
+										return next;
+									})
+								}
+								className='w-4 h-4 rounded text-accent border-grey-300 focus:ring-accent accent-accent cursor-pointer'
 							/>
 							<span>{t("inquiryForm.contactViaEmail", "Email")}</span>
 						</label>
-						<label className='inline-flex items-center gap-2 cursor-pointer'>
+						<label className='inline-flex items-center gap-2.5 cursor-pointer select-none'>
 							<input
-								type='radio'
-								name='contactMethod'
-								value='phone'
-								checked={contactMethod === "phone"}
-								onChange={(e) => setContactMethod(e.target.value)}
-								className='text-accent focus:ring-accent accent-accent'
+								type='checkbox'
+								name='contactMethodPhone'
+								checked={contactMethods.phone}
+								onChange={() =>
+									setContactMethods((prev) => {
+										const next = { ...prev, phone: !prev.phone };
+										if (!next.email && !next.phone) return prev;
+										return next;
+									})
+								}
+								className='w-4 h-4 rounded text-accent border-grey-300 focus:ring-accent accent-accent cursor-pointer'
 							/>
-							<span>{t("inquiryForm.contactViaPhone", "Phone Call / SMS")}</span>
+							<span>{t("inquiryForm.contactViaPhone", "Cellphone / SMS")}</span>
 						</label>
 					</div>
 				</div>
@@ -372,11 +395,10 @@ const InquiryForm = ({
 							if (errors.message) setErrors({ ...errors, message: null });
 						}}
 						placeholder={t("inquiryForm.messagePlaceholder", "Please describe the room, dimensions, or questions regarding our materials and delivery...")}
-						className={`w-full px-4 py-3 bg-grey-50 border rounded-xl text-sm transition-colors focus:outline-none ${
-							errors.message
+						className={`w-full px-4 py-3 bg-grey-50 border rounded-xl text-sm transition-colors focus:outline-none ${errors.message
 								? "border-rose-400 bg-rose-50/50 focus:border-rose-500"
 								: "border-grey-200 focus:border-accent focus:bg-white"
-						}`}
+							}`}
 					/>
 					{errors.message && (
 						<p className='text-xs text-rose-500 mt-1.5 flex items-center gap-1 font-medium'>

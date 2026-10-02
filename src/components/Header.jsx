@@ -42,11 +42,10 @@ const Header = ({
 
 	return (
 		<header
-			className={`fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300 ${
-				scrolled
+			className={`fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300 ${scrolled
 					? "bg-white/95 backdrop-blur-md shadow-sm py-3.5 text-primary"
 					: "bg-gradient-to-b from-black/75 via-black/35 to-transparent py-5 text-white"
-			}`}
+				}`}
 		>
 			<div className='container mx-auto flex items-center justify-between'>
 				{/* Brand Logo */}
@@ -59,9 +58,8 @@ const Header = ({
 						<img src={Logo} alt='TK Craft Logo' className='h-full w-full object-cover scale-110' />
 					</div>
 					<span
-						className={`font-primary font-bold text-xl md:text-2xl tracking-tight transition-colors ${
-							isTransparent ? "text-white" : "text-primary"
-						}`}
+						className={`font-primary font-bold text-xl md:text-2xl tracking-tight transition-colors ${isTransparent ? "text-white" : "text-primary"
+							}`}
 					>
 						{t("nav.brandName", "TK")} <span className='text-accent'>{t("nav.brandSub", "Craft")}</span>
 					</span>
@@ -79,7 +77,7 @@ const Header = ({
 								key={item.path}
 								type='button'
 								onClick={() => handleNavClick(item.path)}
-								className={`text-sm font-medium tracking-wide transition-all relative py-1 focus:outline-none ${
+								className={`text-sm font-medium tracking-wide transition-all duration-300 relative py-1.5 focus:outline-none group ${
 									isTransparent
 										? isActive
 											? "text-white font-semibold"
@@ -89,14 +87,16 @@ const Header = ({
 											: "text-grey-700 hover:text-accent"
 								}`}
 							>
-								{item.name}
-								{isActive && (
-									<span
-										className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full ${
-											isTransparent ? "bg-white" : "bg-accent"
-										}`}
-									/>
-								)}
+								<span>{item.name}</span>
+								<span
+									className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full transition-all duration-300 ease-out origin-left ${
+										isActive
+											? `opacity-100 scale-x-100 ${isTransparent ? "bg-white" : "bg-accent"}`
+											: `opacity-0 scale-x-0 group-hover:opacity-60 group-hover:scale-x-75 ${
+													isTransparent ? "bg-white/70" : "bg-accent/70"
+											  }`
+									}`}
+								/>
 							</button>
 						);
 					})}
@@ -117,16 +117,14 @@ const Header = ({
 								handleNavClick("/products");
 							}
 						}}
-						className={`relative p-2 rounded-full transition-colors ${
-							isTransparent
+						className={`relative p-2 rounded-full transition-colors ${isTransparent
 								? "text-white hover:bg-white/10"
 								: "text-grey-700 hover:bg-grey-100"
-						}`}
-						title={`${wishlistCount} ${
-							wishlistCount === 1
+							}`}
+						title={`${wishlistCount} ${wishlistCount === 1
 								? t("nav.savedItems", "saved item")
 								: t("nav.savedItemsPlural", "saved items")
-						}`}
+							}`}
 					>
 						<IoIosHeart className='text-2xl text-rose-500' />
 						{wishlistCount > 0 && (
@@ -164,9 +162,8 @@ const Header = ({
 						type='button'
 						onClick={() => setMobileOpen(!mobileOpen)}
 						aria-label='Toggle navigation menu'
-						className={`p-2 rounded-lg text-2xl transition-colors ${
-							isTransparent ? "text-white" : "text-primary"
-						}`}
+						className={`p-2 rounded-lg text-2xl transition-colors ${isTransparent ? "text-white" : "text-primary"
+							}`}
 					>
 						{mobileOpen ? <CgClose /> : <CgMenuRight />}
 					</button>
@@ -216,9 +213,9 @@ const Header = ({
 										key={item.path}
 										type='button'
 										onClick={() => handleNavClick(item.path)}
-										className={`text-left px-4 py-3 rounded-xl text-base font-semibold transition-all ${
+										className={`text-left px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${
 											isActive
-												? "bg-accent text-white"
+												? "bg-accent text-white shadow-sm"
 												: "text-grey-700 hover:bg-grey-100"
 										}`}
 									>
